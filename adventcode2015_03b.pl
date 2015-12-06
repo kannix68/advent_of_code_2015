@@ -1,11 +1,11 @@
-#!/usr/bin/perl
+#!/bin/perl
 ##
 # advent of code 2015. kannix68 (@github).
-# Day 1: Not Quite Lisp.
+# Day 3: Perfectly Spherical Houses in a Vacuum.
+# Part [B].
 
 require 5;
 use strict;
-use warnings;
 use English;
 
 my $DEBLOG = 0;  # 0|1
@@ -51,25 +51,46 @@ sub readdata() {
 }
 
 #** our algorithm
-
 sub algo_exec($) {
   my $data = shift();
-  my $floor_num = 0;
   my $i;
+  my @x_posa = (0, 0);
+  my @y_posa = (0, 0);
+  my %positions;
+  
+  # starting position is delivered/added:
+  my $idx = 0;
+  my $k;
+  $k = $x_posa[$idx]. ',' . $y_posa[$idx];
+  $positions{$k}++;
+  deblog("#<initial>: idx=$idx; num keys=" . scalar(keys(%positions)) . "; key=$k; value=" . $positions{$k});
   for($i=0; $i < length($data); $i++) {
+    $idx = $i % 2;
     my $c = substr($data, $i, 1);
-    if ($c eq '(') {
-      $floor_num++;
-    } elsif ($c eq ')') {
-      $floor_num--;
+    if ($c eq '>') {
+      $x_posa[$idx]++;
+    } elsif ($c eq '<') {
+      $x_posa[$idx]--;
+    } elsif ($c eq '^') {
+      $y_posa[$idx]++;
+    } elsif ($c eq 'v') {
+      $y_posa[$idx]--;
     } else {
       print STDERR "$!, input error on >$c<.";
       die "input error";
     }
+    my $k = $x_posa[$idx] . ',' . $y_posa[$idx];
+    $positions{$k}++;
+    my $v = $positions{$k};
+    my $d = scalar keys %positions;
+    if ( $i < 10 ) {
+      deblog("# $i: idx=$idx; op=$c; num keys=$d; key=$k; value=$v");
+    }
   }
-  deblog("$i operators processed");
-  deblog("result=$floor_num");
-  return $floor_num;
+  my $d = scalar keys %positions;
+  deblog("$i operators processed, plus initial position");
+  deblog("result=$d");
+  return($d);
 }
 
 #** "MAIN"
@@ -78,41 +99,17 @@ use Test::More;
 my $result;
 my $in;
 
-$in = '(())';
+$in = '^v';
 $result = algo_exec($in);
-ok( $result == 0, "'$in' results in floor 0" );
+ok( $result == 3, "eg with robo-santa '$in' results in 3" );
 
-$in = '()()';
+$in = '^>v<';
 $result = algo_exec($in);
-ok( $result == 0, "'$in' results in floor 0" );
+ok( $result == 3, "eg with robo-santa '$in' results in 3" );
 
-$in = '(((';
+$in = '^v^v^v^v^v';
 $result = algo_exec($in);
-ok( $result == 3, "'$in' results in floor 3" );
-
-$in = '(()(()(';
-$result = algo_exec($in);
-ok( $result == 3, "'$in' results in floor 3" );
-
-$in = '))(((((';
-$result = algo_exec($in);
-ok( $result == 3, "'$in' results in floor 3" );
-
-$in = '())';
-$result = algo_exec($in);
-ok( $result == -1, "'$in' results in floor -1" );
-
-$in = '))(';
-$result = algo_exec($in);
-ok( $result == -1, "'$in' results in floor -1" );
-
-$in = ')))';
-$result = algo_exec($in);
-ok( $result == -3, "'$in' results in floor -3" );
-
-$in = ')())())';
-$result = algo_exec($in);
-ok( $result == -3, "'$in' results in floor -3" );
+ok( $result == 11, "eg with robo-santa '$in' results in 11" );
 
 Test::More::done_testing();
 infolog("Tests done!");

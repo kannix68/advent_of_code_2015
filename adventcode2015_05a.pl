@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 ##
 # advent of code 2015. kannix68 (@github).
-# day 05
+# Day 5: Doesn't He Have Intern-Elves For This?
 
 require 5;
 use strict;

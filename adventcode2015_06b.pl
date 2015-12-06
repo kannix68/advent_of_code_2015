@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 ##
 # Advent of code 2015. kannix68 (@github).
-# day 06
+# Day 6: Probably a Fire Hazard.
 
 require 5;
 use strict;
