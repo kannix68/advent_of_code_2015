@@ -1,10 +1,10 @@
-##
-#
+## R (R-language)
+# advent of code 2015. kannix68 (@github).
+# Day 1: Not Quite Lisp.
 
 # sorry, please currently set your directory 
 setwd('~/devel/advent_of_code_2015')
 inFileName = 'adventcode2015_in01.txt'
-#print(commandArgs())
 
 #** our algorithm
 algo <- function(s){
@@ -13,9 +13,7 @@ algo <- function(s){
   n_ups = nchar(ups)
   n_downs = n_all - n_ups
   pos = n_ups - n_downs
-  
-  # Return pos 
-  pos
+  return(pos)
 }
 
 #** TESTING
@@ -57,8 +55,6 @@ stopifnot(-3 == res)
 #** "MAIN"
 print(getwd())
 ins = gsub("[\r\n]", "", readChar(inFileName, file.info(inFileName)$size) )
-#singleString <- paste(readLines(fileName), collapse=" ")
-#print(ins)
 print('input string was read')
 
 res = algo(ins)

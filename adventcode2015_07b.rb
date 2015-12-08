@@ -1,4 +1,4 @@
-# ruby
+#!/usr/bin/ruby
 ##
 # advent of code 2015. kannix68 (@github).
 # Day 7: Some Assembly Required
