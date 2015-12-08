@@ -16,7 +16,7 @@ Input data given for my AOC login is saved in a text file
 
 ## Solutions
 
-Solutions are saved to `adventcode_[DD][a|b].[prog-lang-suffix]`.
+Solutions are saved to `adventcode_[DD][a|b].[prog-lang-extension]`.
 Most are straight-forward, plain, non-elegant, non-optimized, ad-hoc/brute
 force solutions.
 
@@ -30,14 +30,24 @@ Unit tests using standard library Test::More.
 
 ### ruby
 Ruby means a ruby 2.2 standard distribution (MRI),
-tested using ruby 2.2.2 in a rvm environment on Mac OS X.
+tested using ruby v2.2.2 in a rvm environment on Mac OS X.
 
 Unit Tests using standard library test/unit.
 
-### R-lang
-R-language means R, tested using R v 3.2.0 (Revolution R Open),
+### R (R-lang)
+R means R-language, tested using R v3.2.0 (Revolution R Open),
 with R-Studio as editor on Mac OS X.
 
 Some hardcoded paths/filenames in input data file reading.
 
 Assertions using builtin `stopifnot` function (currently no real unit test).
+
+### JavaScript
+JavaScript is node.js code, tested using node.js v4.2.3 on Mac OS X.
+
+For JS, a filename to read/process is expected to be
+the first script commandline arg.
+There should be a test input file for a given day challenge tests/examples.
+
+Assertions using standard library assert.
+files / filesystem reading using standard library fs.
