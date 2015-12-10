@@ -54,7 +54,7 @@ function algo_exec(ins) {
         hxs = res[1];
         hxcode = res[2];
         cc = String.fromCharCode(parseInt(hxcode, 16));
-        s = s.replace(hxs,cc);
+        s = s.replace(hxs, cc);
         tracelog("found hexchr code=" + hxcode + ", chr=" + cc + ", new=" + s);
       }
     } while (res);
