@@ -11,8 +11,9 @@ require 'aocbase.rb' # < helpers class
 
 #** our algorithm
 
-class Day11Solver <AocBase
+class Day11Solver < AocBase
   def initialize()
+    super()
     @v_seqs = []
     for num in ('a'.ord) .. ('x'.ord)
       @v_seqs.push(num.chr + (num+1).chr + (num+2).chr)
@@ -164,6 +165,7 @@ end # class
 class Test02Solution < Test::Unit::TestCase
   def test_solution_1
     day11solver = Day11Solver.new
+    #day11solver.log_level = 1
     ins = day11solver.readdata()
     assert( !ins.nil? && ins != '', "data file read" )
     day11solver.infolog("data=#{ins}")

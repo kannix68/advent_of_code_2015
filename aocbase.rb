@@ -6,11 +6,23 @@
 
 # A ruby helper class for advent of code.
 class AocBase
-  DEBLOG = 0;  # 0|1|2
+  @log_level # 0|1|2
+
+  def initialize()
+    #puts "aocbase:initialize() called"
+    @log_level = 0
+  end
+
+  def log_level=(lvl)
+    if lvl < 0 && lvl > 2
+      raise "unsupported log_level #{lvl}"
+    end
+    @log_level = lvl
+  end
 
   # Trace level logging.
   def tracelog(s)
-    if (DEBLOG > 1) then
+    if @log_level > 1
       s.chomp!
       STDERR.puts "T: #{s}"
     end
@@ -18,7 +30,7 @@ class AocBase
 
   # Debug level logging.
   def deblog(s)
-    if (DEBLOG > 0) then
+    if @log_level > 0
       s.chomp!
       STDERR.puts "D: #{s}"
     end

@@ -34,6 +34,9 @@ tested using ruby v2.2.2 in a rvm environment on Mac OS X.
 
 Unit Tests using standard library test/unit.
 
+A base helper class Aocbase can be required from local file
+(`require aocbase.rb`).
+
 ### R (R-lang)
 R means R-language, tested using R v3.2.0 (Revolution R Open),
 with R-Studio as editor on Mac OS X.
@@ -51,3 +54,10 @@ There should be a test input file for a given day challenge tests/examples.
 
 Assertions using standard library assert.
 files / filesystem reading using standard library fs.
+
+### Groovy
+Groovy is used for solutions unsing the Java JVM ecosystem.
+
+Groovy version:
+
+    Groovy Version: 2.4.5 JVM: 1.8.0_45 Vendor: Oracle Corporation OS: Mac OS X
