@@ -1,15 +1,13 @@
 # ruby
 ##
-# advent of code 2015. kannix68.
-
-#** Helpers class
+# advent of code 2015. kannix68 @ github.
 
 # A ruby helper class for advent of code.
 class AocBase
   @log_level # 0|1|2
 
+  # initilize. sets @log_level to 0.
   def initialize()
-    #puts "aocbase:initialize() called"
     @log_level = 0
   end
 
@@ -80,4 +78,3 @@ class AocBase
     return( readfile(infile) )
   end
 end # class AocBase
-
