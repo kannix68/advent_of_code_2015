@@ -2,14 +2,13 @@
 ##
 # advent of code 2015. kannix68 @ github.
 
-# A ruby helper class for advent of code.
-class AocBase
+module LogBase
   @log_level # 0|1|2
 
   # initilize. sets @log_level to 0.
-  def initialize()
-    @log_level = 0
-  end
+  #def initialize
+  #  @log_level = 0
+  #end
 
   def log_level=(lvl)
     if lvl < 0 && lvl > 2
@@ -38,6 +37,17 @@ class AocBase
   def infolog(s)
     s.chomp!
     STDERR.puts "I: #{s}"
+  end
+end # class LogBase
+
+
+# A ruby helper class for advent of code.
+class AocBase
+  include LogBase
+
+  # initilize. call super().
+  def initialize()
+    super()
   end
 
   # Read an input file given by name into a string.

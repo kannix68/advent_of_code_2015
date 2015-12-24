@@ -1,0 +1,4 @@
+containers of size 20, 15, 10, 5, and 5
+A: How many different combinations of containers can exactly fit all 150 liters of eggnog?
+B: Find the minimum number of containers that can exactly fit all 150 liters of eggnog.
+  How many different ways can you fill that number of containers and still hold exactly 150 litres?
