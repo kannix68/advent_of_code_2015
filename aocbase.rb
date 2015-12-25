@@ -3,7 +3,7 @@
 # advent of code 2015. kannix68 @ github.
 
 module LogBase
-  @log_level # 0|1|2
+  attr_accessor :log_level # 0|1|2
 
   # initilize. sets @log_level to 0.
   #def initialize
@@ -11,7 +11,7 @@ module LogBase
   #end
 
   def log_level=(lvl)
-    if lvl < 0 && lvl > 2
+    if lvl < -1 && lvl > 2
       raise "unsupported log_level #{lvl}"
     end
     @log_level = lvl
@@ -19,24 +19,17 @@ module LogBase
 
   # Trace level logging.
   def tracelog(s)
-    if @log_level > 1
-      s.chomp!
-      STDERR.puts "T: #{s}"
-    end
+    STDERR.puts "T: #{s}" unless @log_level < 2
   end
 
   # Debug level logging.
   def deblog(s)
-    if @log_level > 0
-      s.chomp!
-      STDERR.puts "D: #{s}"
-    end
+    STDERR.puts "D: #{s}" unless @log_level < 1
   end
 
   # Info level logging.
   def infolog(s)
-    s.chomp!
-    STDERR.puts "I: #{s}"
+    STDERR.puts "D: #{s}" unless @log_level < 0
   end
 end # class LogBase
 
